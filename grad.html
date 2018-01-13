@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kolodvor</title>
+	<script src="assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://use.fontawesome.com/90033e3b13.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> <a class="navbar-brand"><i class="fa fa-bus"></i> kolodvor</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a>
+					</li>
+					<li><a href="karte.html">Karte</a>
+					</li>
+					<li class="active"><a href="grad.html">Administracija</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<h1><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Administracija gradova</h1>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="list-group">
+            <a href="index.html" class="list-group-item active main-color-bg"> <span class="fa fa-cog" aria-hidden="true"></span> Dashboard</a> <a href="index.html" class="list-group-item"><span class="fa fa-home" aria-hidden="true"></span> Home</a>
+						<a href="karte.html" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span> Karte </a>
+						<a href="grad.html" class="list-group-item"><span class="fa fa-edit" aria-hidden="true"></span> Administracija </a>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-default">
+						<div class="panel-heading main-color-bg">
+							<h3 class="panel-title">Pregled gradova</h3>
+						</div>
+						<div class="panel-body">
+							<h2>Gradovi  <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#dodaj-grad"><span class="glyphicon glyphicon-plus"></span> </button></h2>
+							<table id="tablica-gradovi" class="table table-striped">
+								<thead>
+									<tr>
+										<th>R.br.</th>
+										<th>Naziv</th>
+										<th>Latituda</th>
+										<th>Longituda</th>
+										<th>Dostupan</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="dodaj-grad" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Dodaj grad</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="inptNazivGrada">Naziv grada</label>
+									<input type="text" class="form-control" id="inptNazivGrada">
+								</div>
+								<div class="form-group">
+									<label for="txtLat">Latituda</label>
+									<textarea class="form-control" id="txtLat"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="txtLng">Longituda</label>
+									<textarea class="form-control" id="txtLng"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="txtDostupan">Dostupan</label>
+									<textarea class="form-control" id="txtDostupan"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button onclick="DodajGrad()" type="button" class="btn btn-success" data-dismiss="modal">Dodaj</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Odustani</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="uredi-grad" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Uredi grad</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="inptEditNazivGrada">Naziv grada</label>
+									<input type="text" class="form-control" id="inptEditNazivGrada">
+								</div>
+								<div class="form-group">
+									<label for="txtEditLat">Latituda</label>
+									<textarea class="form-control" id="txtEditLat"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="txtEditLng">Longituda</label>
+									<textarea class="form-control" id="txtEditLng"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="txtEditDostupan">Dostupan</label>
+									<textarea class="form-control" id="txtEditDostupan"></textarea>
+								</div>
+								<div class="modal-footer">
+									<button id="btnUrediGrad" type="button" class="btn btn-success" data-dismiss="modal">Ažuriraj</button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Odustani</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+	<script src="js/firebase_config.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/administracija.js"></script>
+</body>
+
+</html>

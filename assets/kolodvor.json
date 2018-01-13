@@ -1,0 +1,103 @@
+{
+	"gradovi": [{
+			"gradovi_naziv": "Virovitica",
+			"lat": "45.8316",
+			"lng": "17.3855",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Zagreb",
+			"lat": "45.8150",
+			"lng": "15.9819",
+			"dostupan": "da"
+		},
+		
+		{
+			"gradovi_naziv": "Osijek",
+			"lat": "45.5550",
+			"lng": "18.6955",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Vukovar",
+			"lat": "45.3452",
+			"lng": "19.0010",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Vinkovci",
+			"lat": "45.2879",
+			"lng": "18.8057",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Križevci",
+			"lat": "46.0224",
+			"lng": "16.5463",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Koprivnica",
+			"lat": "46.1639",
+			"lng": "16.8335",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Varaždin",
+			"lat": "46.3057",
+			"lng": "16.3366",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Slatina",
+			"lat": "45.7019",
+			"lng": "17.7011",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Čakovec",
+			"lat": "46.3897",
+			"lng": "16.4380",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Rijeka",
+			"lat": "45.3271",
+			"lng": "14.4422",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Split",
+			"lat": "43.5081",
+			"lng": "16.4402",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Zadar",
+			"lat": "44.1194",
+			"lng": "15.2314",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Dubrovnik",
+			"lat": "42.6507",
+			"lng": "18.0944",
+			"dostupan": "da"
+		},
+		{
+			"gradovi_naziv": "Žminj",
+			"lat": "45.1428",
+			"lng": "13.9065",
+			"dostupan": "da"
+		}
+	
+	],
+		
+	
+	"karte":[{
+			"tip":"",
+			"datum_kreiranja":""
+		}
+	]
+	
+}

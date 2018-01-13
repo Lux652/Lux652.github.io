@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kolodvor</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/90033e3b13.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> <a class="navbar-brand"><i class="fa fa-bus"></i> kolodvor</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Home</a>
+					</li>
+					<li><a href="karte.html">Karte</a>
+					</li>
+					<li><a href="grad.html">Administracija</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<h1><span class="fa fa-home" aria-hidden="true"></span> Home</h1>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="list-group">
+						<a href="index.html" class="list-group-item active main-color-bg"> <span class="fa fa-cog" aria-hidden="true"></span> Dashboard</a> <a href="index.html" class="list-group-item"><span class="fa fa-home" aria-hidden="true"></span> Home</a>
+						<a href="karte.html" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span> Karte </a>
+						<a href="grad.html" class="list-group-item"><span class="fa fa-edit" aria-hidden="true"></span> Administracija </a>
+					</div>
+				</div>
+				<div class="col-md-9">
+
+					<div class="panel panel-default">
+						<div class="panel-heading main-color-bg">
+							<h3 class="panel-title">Kreiraj kartu</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-5">
+									<div class="form-group">
+										<h5>Odaberite polazište</h5>
+										<select class="selectpicker form-control" id="polaziste"></select>
+										<h5>Odaberite odredište</h5>
+										<select class="selectpicker form-control" id="odrediste"></select>
+										<h5>Tip karte</h5>
+										<label class="radio-inline">
+											<input type="radio" name="optradio" value="Jednosmjerna" id="tip">Jednosmjerna</label>
+										<label class="radio-inline">
+											<input type="radio" name="optradio" value="Povratna" id="tip">Povratna</label>
+										<br>
+										<br>
+										<button type="button" class="btn btn-info">Provjeri cijenu</button>
+										<button onclick="DodajKartu()" type="button" class="btn btn-primary">Kreiraj</button>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+	<script src="js/firebase_config.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/administracija.js"></script>
+</body>
+
+</html>
