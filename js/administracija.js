@@ -17,7 +17,7 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja)
     oTablicaGradova.find('tbody').append(sRow);
     oPolaziste.append(sSelect);
     oOdrediste.append(sSelect);
-    console.log(oGrad.gradovi_naziv);
+    //console.log(oGrad.gradovi_naziv);
 	});
 });
 
@@ -70,6 +70,7 @@ function DodajKartu()
   var oZapis={};
   oZapis[sKey]=oKarte;
   oDbKarte.update(oZapis);
+  alert("Karta uspješno kreirana!");
 }
 
 
