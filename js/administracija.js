@@ -70,7 +70,6 @@ function DodajKartu()
   var oZapis={};
   oZapis[sKey]=oKarte;
   oDbKarte.update(oZapis);
-  alert("Karta uspješno kreirana!");
 }
 
 
