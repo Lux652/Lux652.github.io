@@ -32,7 +32,7 @@ oDbKarte.on('value', function(oOdgovorPosluzitelja)
 	{
 		var sKarteKey = oKartaSnapshot.key;
 		var oKarta = oKartaSnapshot.val();
-		var sRow = '<tr><td>' + nRbr++ + '.</td><td>' + oKarta.datum+ '</td><td>' + oKarta.polaziste + '</td><td>'+oKarta.odrediste+'</td><td>'+oKarta.tip+'</td></tr>';
+		var sRow = '<tr><td>' + nRbr++ + '.</td><td>' + oKarta.datum+ '</td><td>' + oKarta.polaziste + '</td><td>'+oKarta.odrediste+'</td><td>'+oKarta.tip+'</td><td>'+oKarta.udaljenost+" km"+'</td><td>'+oKarta.cijena+" kn"+'</td></tr>';
 		oTablicaKarta.find('tbody').append(sRow);
 	});
 });
@@ -75,6 +75,27 @@ function deg2rad(deg) {
 return deg * (Math.PI/180)
 }
 
+
+function DajCijenu(){
+
+  var sUdaljenost=Haversine().toFixed(2);
+  var sJednosmjernaKarta=sUdaljenost*0.35.toFixed(2);
+  var sCijena1=sJednosmjernaKarta*2;
+  var sCijena2=((sJednosmjernaKarta)*2)*0.3;
+  var sPovratnaKarta=sCijena1-sCijena2;
+  var isJednosmjerna = $('input[value=Jednosmjerna]').is(':checked');
+  var isPovratna = $('input[value=Povratna]').is(':checked');
+
+  if (isJednosmjerna) {
+    return sJednosmjernaKarta.toFixed(2);
+  }
+  else if(isPovratna) {
+    return sPovratnaKarta.toFixed(2);
+  }
+}
+
+
+
 function DodajKartu()
 {
 
@@ -83,35 +104,33 @@ function DodajKartu()
   var sPolaziste = $( "#polaziste option:selected" ).text();
   var sOdrediste = $( "#odrediste option:selected" ).text();
   var sUdaljenost=Haversine().toFixed(2);
-  var sJednosmjernaKarta=sUdaljenost*0.35.toFixed(2);
-  var sPovratnaKarta=((sJednosmjernaKarta*sJednosmjernaKarta)/2)*0.3;
-  var sCijena;
-  $('input:radio').change(
-function(){
-    if($('input[value=Jednosmjerna]:checked').val()){
-        var sCijena=sJednosmjernaKarta;
-    }
-    else{
-        var sCijena=sPovratnaKarta;
-return sCijena;    }
-}
-);
+
+
   var oKarte={
+
     datum:DajDanasnjiDatum(),
-    tip:sTipKarte,
     polaziste:sPolaziste,
     odrediste:sOdrediste,
+    tip:sTipKarte,
     udaljenost:sUdaljenost,
-    cijena:sCijena
+    cijena:DajCijenu(),
+
 
   };
 
   var oZapis={};
   oZapis[sKey]=oKarte;
   oDbKarte.update(oZapis);
+
+
 }
 
+function ProvjeriCijenu(){
+  var sUdaljenost=Haversine().toFixed(2);
+  alert("Udaljenost:"+ sUdaljenost+" km"+" \r\nCijena: "+DajCijenu()+" kn");
 
+
+}
 
 
 function DodajGrad()
