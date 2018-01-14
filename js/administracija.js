@@ -3,22 +3,22 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja) {
     var oOdrediste = $('#odrediste');
     var oTablicaGradova = $('#tablica-gradovi')
     oTablicaGradova.find('tbody').empty();
-    var nRbr = 1;
-    oPolaziste.find('select').empty();
-    oOdrediste.find('select').empty();
+    oPolaziste.empty();
+    oOdrediste.empty();
     oOdgovorPosluzitelja.forEach(function(oGradoviSnapshot) {
+        var nRbr = 1;
         var sGradKey = oGradoviSnapshot.key;
         var oGrad = oGradoviSnapshot.val();
         var oDostupan=oGrad.dostupan=="da";
         //var sSelect = '<option value="' + sGradKey + '" data-lat="' + oGrad.lat + '" data-lng="' + oGrad.lng + '" data-dostupan="'+ oDostupan+ '">' + oGrad.gradovi_naziv + '</option>';
         var sRow = '<tr><td>' + nRbr++ + '.</td><td>' + oGrad.gradovi_naziv + '</td><td>' + oGrad.lat + '</td><td>' + oGrad.lng + '</td><td>' + oGrad.dostupan + '</a></td><td><button type="button"  onclick="ModalUrediGrad(\'' + sGradKey + '\')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></td><td><button onclick="obrisiGrad(\'' + sGradKey + '\')" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>';
         var isDostupan='<option value="' + sGradKey + '" data-lat="' + oGrad.lat + '" data-lng="' + oGrad.lng + '">' + oGrad.gradovi_naziv + '</option>';
+        oTablicaGradova.find('tbody').append(sRow);
         if (oDostupan) {
           oPolaziste.append(isDostupan);
           oOdrediste.append(isDostupan);
         } else  {
         };
-        oTablicaGradova.find('tbody').append(sRow);
     });
 });
 
