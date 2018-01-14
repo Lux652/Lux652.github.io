@@ -11,13 +11,13 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja)
 	{
 		var sGradKey=oGradoviSnapshot.key;
 		var oGrad = oGradoviSnapshot.val();
-    var sSelect='<option value="'+sGradKey+'">'+oGrad.gradovi_naziv+'</option>' ;
+    var sSelect='<option value="'+sGradKey+'" data-lat="'+oGrad.lat+'" data-lng="'+oGrad.lng+'">'+oGrad.gradovi_naziv+'</option>' ;
     var sRow='<tr><td>' + nRbr++ + '.</td><td>' + oGrad.gradovi_naziv + '</td><td>' + oGrad.lat + '</td><td>' + oGrad.lng + '</td><td>' + oGrad.dostupan+'</a></td><td><button type="button"  onclick="ModalUrediGrad(\''+sGradKey+'\')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></td><td><button onclick="obrisiGrad(\''+sGradKey+'\')" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>';
 
     oTablicaGradova.find('tbody').append(sRow);
     oPolaziste.append(sSelect);
     oOdrediste.append(sSelect);
-    //console.log(oGrad.gradovi_naziv);
+    console.log(sSelect);
 	});
 });
 
@@ -52,19 +52,58 @@ function DajDanasnjiDatum()
 
 
 
+
+function Haversine(lat1,lon1,lat2,lon2) {
+lat1= $( "#polaziste option:selected" ).attr('data-lat'),
+lon1= $( "#polaziste option:selected" ).attr('data-lng')
+lat2= $( "#odrediste option:selected" ).attr('data-lat'),
+lon2= $( "#odrediste option:selected" ).attr('data-lng')
+var R = 6371; // Radius of the earth in km
+var dLat = deg2rad(lat2-lat1);  // deg2rad below
+var dLon = deg2rad(lon2-lon1);
+var a =
+  Math.sin(dLat/2) * Math.sin(dLat/2) +
+  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+  Math.sin(dLon/2) * Math.sin(dLon/2)
+  ;
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+var d = R * c; // Distance in km
+return d;
+}
+
+function deg2rad(deg) {
+return deg * (Math.PI/180)
+}
+
 function DodajKartu()
 {
+
   var sTipKarte = $('input[id=tip]:checked').val();
   var sKey = firebase.database().ref().child('karte').push().key;
   var sPolaziste = $( "#polaziste option:selected" ).text();
   var sOdrediste = $( "#odrediste option:selected" ).text();
-
-
+  var sUdaljenost=Haversine().toFixed(2);
+  var sJednosmjernaKarta=sUdaljenost*0.35.toFixed(2);
+  var sPovratnaKarta=((sJednosmjernaKarta*sJednosmjernaKarta)/2)*0.3;
+  var sCijena;
+  $('input:radio').change(
+function(){
+    if($('input[value=Jednosmjerna]:checked').val()){
+        var sCijena=sJednosmjernaKarta;
+    }
+    else{
+        var sCijena=sPovratnaKarta;
+return sCijena;    }
+}
+);
   var oKarte={
     datum:DajDanasnjiDatum(),
     tip:sTipKarte,
     polaziste:sPolaziste,
     odrediste:sOdrediste,
+    udaljenost:sUdaljenost,
+    cijena:sCijena
+
   };
 
   var oZapis={};
