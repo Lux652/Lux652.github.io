@@ -2,11 +2,11 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja) {
     var oPolaziste = $('#polaziste');
     var oOdrediste = $('#odrediste');
     var oTablicaGradova = $('#tablica-gradovi')
+    var nRbr = 1;
     oTablicaGradova.find('tbody').empty();
     oPolaziste.empty();
     oOdrediste.empty();
     oOdgovorPosluzitelja.forEach(function(oGradoviSnapshot) {
-        var nRbr = 1;
         var sGradKey = oGradoviSnapshot.key;
         var oGrad = oGradoviSnapshot.val();
         var oDostupan=oGrad.dostupan=="da";
@@ -32,7 +32,7 @@ oDbKarte.on('value', function(oOdgovorPosluzitelja) {
         var sKarteKey = oKartaSnapshot.key;
         var oKarta = oKartaSnapshot.val();
         var sRow = '<tr><td>' + nRbr++ + '.</td><td>' + oKarta.datum + '</td><td>' + oKarta.polaziste + '</td><td>' + oKarta.odrediste + '</td><td>' + oKarta.tip + '</td><td>' + oKarta.udaljenost + " km" + '</td><td>' + oKarta.cijena + " kn" + '</td></tr>';
-        oTablicaKarta.find('tbody').append(sRow);
+        oTablicaKarta.append(sRow);
     });
 });
 
