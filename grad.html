@@ -60,18 +60,22 @@
 						</div>
 						<div class="panel-body">
 							<h2>Gradovi  <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#dodaj-grad"><span class="glyphicon glyphicon-plus"></span> </button></h2>
-							<table id="tablica-gradovi" class="table table-striped">
-								<thead>
-									<tr>
-										<th>R.br.</th>
-										<th>Naziv</th>
-										<th>Latituda</th>
-										<th>Longituda</th>
-										<th>Dostupan</th>
-									</tr>
-								</thead>
-								<tbody></tbody>
-							</table>
+							<div class="table-responsive">
+								<table id="tablica-gradovi" class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>R.br.</th>
+											<th>Naziv</th>
+											<th>Latituda</th>
+											<th>Longituda</th>
+											<th>Dostupan</th>
+											<th>Uredi</th>
+											<th>Obriši</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
 							<br>
 						</div>
 					</div>
@@ -86,19 +90,19 @@
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="inptNazivGrada">Naziv grada</label>
-									<input type="text" class="form-control" id="inptNazivGrada">
+									<input type="text" class="form-control" id="inptNazivGrada" required>
 								</div>
 								<div class="form-group">
 									<label for="txtLat">Latituda</label>
-									<textarea class="form-control" id="txtLat"></textarea>
+									<textarea class="form-control" id="txtLat" required></textarea>
 								</div>
 								<div class="form-group">
 									<label for="txtLng">Longituda</label>
-									<textarea class="form-control" id="txtLng"></textarea>
+									<textarea class="form-control" id="txtLng" required></textarea>
 								</div>
 								<div class="form-group">
 									<label for="txtDostupan">Dostupan</label>
-									<textarea class="form-control" id="txtDostupan"></textarea>
+									<textarea class="form-control" id="txtDostupan" required></textarea>
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -118,19 +122,19 @@
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="inptEditNazivGrada">Naziv grada</label>
-									<input type="text" class="form-control" id="inptEditNazivGrada">
+									<input type="text" class="form-control" id="inptEditNazivGrada" required>
 								</div>
 								<div class="form-group">
 									<label for="txtEditLat">Latituda</label>
-									<textarea class="form-control" id="txtEditLat"></textarea>
+									<textarea class="form-control" id="txtEditLat" required></textarea>
 								</div>
 								<div class="form-group">
 									<label for="txtEditLng">Longituda</label>
-									<textarea class="form-control" id="txtEditLng"></textarea>
+									<textarea class="form-control" id="txtEditLng" required></textarea>
 								</div>
 								<div class="form-group">
 									<label for="txtEditDostupan">Dostupan</label>
-									<textarea class="form-control" id="txtEditDostupan"></textarea>
+									<textarea class="form-control" id="txtEditDostupan" required></textarea>
 								</div>
 								<div class="modal-footer">
 									<button id="btnUrediGrad" type="button" class="btn btn-success" data-dismiss="modal">Ažuriraj</button>
@@ -142,6 +146,7 @@
 				</div>
 			</div>
 	</section>
+	
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
 	<script src="js/firebase_config.js"></script>

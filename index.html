@@ -63,18 +63,22 @@
 								<div class="col-xs-5">
 									<div class="form-group">
 										<h5>Odaberite polazište</h5>
-										<select class="selectpicker form-control" id="polaziste"></select>
+										<select class="selectpicker form-control" id="polaziste" ></select>
 										<h5>Odaberite odredište</h5>
-										<select class="selectpicker form-control" id="odrediste"></select>
+										<select  disabled class="selectpicker form-control" id="odrediste"></select>
+										<br>
 										<h5>Tip karte</h5>
-										<label class="radio-inline">
-											<input type="radio" name="optradio" value="Jednosmjerna" id="tip">Jednosmjerna</label>
-										<label class="radio-inline">
-											<input type="radio" name="optradio" value="Povratna" id="tip">Povratna</label>
+										<div class="btn-group-inline-lg" data-toggle="buttons">
+											<label>
+												<input  disabled type="radio" name="optradio" autocomplete="off" value="Jednosmjerna" id="tip" class="tip">Jednosmjerna</label>
+											<label >
+												<input  disabled type="radio" name="optradio" autocomplete="off" value="Povratna" id="tip" class="tip">Povratna</label>
+										</div>
 										<br>
-										<br>
-										<button onclick="ProvjeriCijenu()" type="button" class="btn btn-info">Provjeri cijenu</button>
-										<button onclick="DodajKartu()" type="button" class="btn btn-primary">Kreiraj</button>
+										<div class="gumbovi">
+											<button disabled onclick="ProvjeriCijenu()" type="button" class="btn btn-info" id="">Provjeri cijenu</button>
+											<button disabled onclick="DodajKartu()" type="button" class="btn btn-primary">Kreiraj</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -85,6 +89,7 @@
 			</div>
 		</div>
 	</section>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>

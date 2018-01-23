@@ -1,7 +1,9 @@
 oDbGradovi.on('value', function(oOdgovorPosluzitelja) {
     var oPolaziste = $('#polaziste');
     var oOdrediste = $('#odrediste');
-    var oTablicaGradova = $('#tablica-gradovi')
+    var oRadio=$('.tip');
+    var oGumbovi=$('.btn');
+    var oTablicaGradova = $('#tablica-gradovi');
     var nRbr = 1;
     oTablicaGradova.find('tbody').empty();
     oPolaziste.empty();
@@ -10,7 +12,6 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja) {
         var sGradKey = oGradoviSnapshot.key;
         var oGrad = oGradoviSnapshot.val();
         var oDostupan=oGrad.dostupan=="da";
-        //var sSelect = '<option value="' + sGradKey + '" data-lat="' + oGrad.lat + '" data-lng="' + oGrad.lng + '" data-dostupan="'+ oDostupan+ '">' + oGrad.gradovi_naziv + '</option>';
         var sRow = '<tr><td>' + nRbr++ + '.</td><td>' + oGrad.gradovi_naziv + '</td><td>' + oGrad.lat + '</td><td>' + oGrad.lng + '</td><td>' + oGrad.dostupan + '</a></td><td><button type="button"  onclick="ModalUrediGrad(\'' + sGradKey + '\')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></td><td><button onclick="obrisiGrad(\'' + sGradKey + '\')" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>';
         var isDostupan='<option value="' + sGradKey + '" data-lat="' + oGrad.lat + '" data-lng="' + oGrad.lng + '">' + oGrad.gradovi_naziv + '</option>';
         oTablicaGradova.find('tbody').append(sRow);
@@ -20,7 +21,33 @@ oDbGradovi.on('value', function(oOdgovorPosluzitelja) {
         } else  {
         };
     });
+    oPolaziste.prepend('<option value="-1" selected>--Odaberite polazište--</option>');
+    oOdrediste.prepend('<option value="-1" selected>--Odaberite odredište--</option>');
+
+    $(document).ready(function(){
+   $('select').on('change', function(event ) {
+       //restore previously selected value
+       var prevValue = $(this).data('previous');
+       $('select').not(this).find('option[value="'+prevValue+'"]').show();
+       //hide option selected
+       var value = $(this).val();
+       //update previously selected data
+       $(this).data('previous',value);
+       $('select').not(this).find('option[value="'+value+'"]').hide();
+   });
+   oPolaziste.change(function(){
+       oOdrediste.prop('disabled', false);
+   });
+   oOdrediste.change(function(){
+      oRadio.prop('disabled',false);
+   });
+   oRadio.change(function(){
+     oGumbovi.prop('disabled',false);
+   });
 });
+});
+
+
 
 
 
@@ -52,9 +79,9 @@ function DajDanasnjiDatum() {
 
 function Haversine(lat1, lon1, lat2, lon2) {
     lat1 = $("#polaziste option:selected").attr('data-lat'),
-        lon1 = $("#polaziste option:selected").attr('data-lng')
+    lon1 = $("#polaziste option:selected").attr('data-lng')
     lat2 = $("#odrediste option:selected").attr('data-lat'),
-        lon2 = $("#odrediste option:selected").attr('data-lng')
+    lon2 = $("#odrediste option:selected").attr('data-lng')
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
     var dLon = deg2rad(lon2 - lon1);
@@ -137,10 +164,12 @@ function DodajGrad() {
 
 
 function obrisiGrad(sGradKey) {
-    var oGradRef = oDb.ref('gradovi/' + sGradKey);
-    oGradRef.remove();
+    if (confirm("Jeste li sigurni da zelite obrisati ovaj grad?")) {
+      var oGradRef = oDb.ref('gradovi/' + sGradKey);
+      oGradRef.remove();
+  }
+  return false;
 }
-
 
 
 function ModalUrediGrad(sGradKey) {
