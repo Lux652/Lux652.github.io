@@ -1,7 +1,5 @@
 # autobusniKolodvor
-Konstrukcijski zadatak iz predmeta osnove web programiranja
-Projektni zadatak za izradu konstrukcijskih vježbi iz kolegija osnove web programiranja
-Naziv zadatka - Kolodvor
+
 Opis zadatka
 
 Napisati program u web okruženju pomoću kojega se omogućuje zaposlenicima autobusnog kolodvora kreiranje autobusne karte. U bazi je potrebno upisati 15 hrvatskih gradova sa odgovarajućim atributima:
