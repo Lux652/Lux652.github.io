@@ -1,5 +1,7 @@
 # autobusniKolodvor
 
+#live demo at https://kolodvor.herokuapp.com/
+
 Opis zadatka
 
 Napisati program u web okruženju pomoću kojega se omogućuje zaposlenicima autobusnog kolodvora kreiranje autobusne karte. U bazi je potrebno upisati 15 hrvatskih gradova sa odgovarajućim atributima:
