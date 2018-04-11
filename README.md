@@ -1,6 +1,6 @@
 # autobusniKolodvor
 
-#live demo at https://kolodvor.herokuapp.com/
+live demo at https://kolodvor.herokuapp.com/
 
 Opis zadatka
 
@@ -25,12 +25,12 @@ Atributi koji opisuju geografsku lokaciju pojedinog grada(lat,lng) moraju biti t
 
 Kreiranu kartu potrebno je spremiti u bazu
 
-    #Pregled kreiranih karata 
+    Pregled kreiranih karata 
     Omogućiti zaposleniku pregled kreiranih karata. U tabličnom obliku ispisati sve kreirane karte sortirane od najnovije kreirane do najstarije kreirane karte.
-    #Provjera cijene karte 
+    Provjera cijene karte 
     Omogućiti zaposleniku provjeru cijene karte. 
-    #Prikazati formu u kojoj zaposlenik može unijeti polazište, odredište i tip karte(jednosmjerna ili povratna) te na temelju tih podataka program treba vratiti cijenu karte i udaljenost između polazišta i odredišta.
-    #Dodaj grad 
+    Prikazati formu u kojoj zaposlenik može unijeti polazište, odredište i tip karte(jednosmjerna ili povratna) te na temelju tih podataka program treba vratiti cijenu karte i udaljenost između polazišta i odredišta.
+    Dodaj grad 
     Omogućiti zaposleniku da preko forme unese naziv novog grada, latitudu i longitudu, te da se uneseni podaci zapišu u      datoteku bazu.
     Ažuriraj grad 
-    #Omogućiti zaposleniku da uredi dostupnost pojedinog grada.
+    Omogućiti zaposleniku da uredi dostupnost pojedinog grada.
